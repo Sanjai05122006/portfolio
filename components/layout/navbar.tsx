@@ -12,6 +12,27 @@ const landingNavItems = [
   { href: "/contact", label: "Contact" },
 ];
 
+function DeveloperMark() {
+  return (
+    <span className="inline-flex h-[42px] w-[58px] items-center justify-center rounded-[18px] border border-[rgba(201,190,255,0.42)] bg-[linear-gradient(135deg,#e7e1ff_0%,#e6ebff_46%,#d9f0ff_100%)] text-[#6b72ef] shadow-[0_14px_26px_rgba(150,158,219,0.16),inset_0_1px_0_rgba(255,255,255,0.82)]">
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 24 24"
+        className="h-[18px] w-[18px]"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.9"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="m9 7-4 5 4 5" />
+        <path d="m15 7 4 5-4 5" />
+        <path d="M13.5 5 10.5 19" />
+      </svg>
+    </span>
+  );
+}
+
 export function Navbar() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -23,17 +44,12 @@ export function Navbar() {
   return (
     <header className="relative z-40 border-b border-[var(--line)] bg-[var(--surface-soft)]/80 backdrop-blur-xl">
       <div className="flex h-[90px] w-full items-center justify-between px-6 md:px-10 xl:px-[56px]">
-        <div className="flex items-center gap-[22px]">
-          <Link
-            href="/"
-            className="text-[37px] font-semibold leading-none tracking-[-0.06em] text-[var(--foreground)]"
-          >
-            S
-          </Link>
+        <Link href="/" className="flex items-center gap-4">
+          <DeveloperMark />
           <span className="text-[22px] font-medium tracking-[-0.04em] text-[var(--foreground)]">
             Sanjai M
           </span>
-        </div>
+        </Link>
 
         <nav className="hidden items-center gap-[40px] md:flex">
           {landingNavItems.map((item) => {

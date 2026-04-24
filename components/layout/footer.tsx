@@ -36,7 +36,7 @@ function MailIcon() {
 
 export function Footer() {
   return (
-    <footer className="border-t border-[var(--line)] bg-[var(--surface)]">
+    <footer className="relative z-10 shrink-0 border-t border-[var(--line)] bg-[var(--surface)]">
       <div className="flex w-full items-center justify-between px-6 py-8 md:px-10 xl:px-[56px]">
         <p className="text-[15px] tracking-[-0.02em] text-[var(--muted)]">
           © 2025 Sanjai M. All rights reserved.

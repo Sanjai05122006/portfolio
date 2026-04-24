@@ -8,13 +8,13 @@ const floatingCards = [
     title: "Fast execution",
     detail: "Shipped systems with clean UX and scalable architecture.",
     position:
-      "left-0 top-[10%] -translate-x-[6%] lg:-translate-x-[10%] xl:-translate-x-[16%]",
+      "left-0 top-[-4%] -translate-x-[6%] lg:-translate-x-[10%] xl:-translate-x-[16%]",
   },
   {
     title: "AI-first thinking",
     detail: "Applied AI where it improves product quality, not just novelty.",
     position:
-      "right-0 top-[18%] translate-x-[2%] lg:translate-x-[8%] xl:translate-x-[14%]",
+      "right-0 top-[-5%] translate-x-[4%] lg:translate-x-[10%] xl:translate-x-[16%]",
   },
   {
     title: "Strong product sense",

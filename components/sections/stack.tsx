@@ -536,7 +536,7 @@ export function StackSection() {
               </div>
 
               <Link
-                href="/contact"
+                href="mailto:sanjaimurugan08@gmail.com?subject=Let%27s%20Connect"
                 className="group inline-flex h-[56px] items-center justify-center gap-3 rounded-[16px] bg-[#171b25] px-7 text-[16px] font-medium tracking-[-0.03em] text-white shadow-[0_18px_38px_rgba(34,39,59,0.22)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_46px_rgba(72,82,122,0.26)]"
               >
                 <span className="text-white">Let&apos;s Build Something</span>

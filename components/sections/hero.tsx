@@ -1,8 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import heroArtwork from "@/landing-page-right-side.png";
-
 const floatingCards = [
   {
     title: "Fast execution",
@@ -177,7 +175,8 @@ export function Hero() {
             </Link>
 
             <Link
-              href="mailto:sanjaimurugan08@gmail.com?subject=Resume%20Request"
+              href="/assets/resume/Resume-Final-Draft.pdf"
+              download="Sanjai-M-Resume.pdf"
               className="group inline-flex h-[58px] items-center justify-center gap-3 rounded-[16px] border border-[var(--line-strong)] bg-[var(--surface-soft)]/85 px-7 text-[16px] font-medium tracking-[-0.03em] text-[var(--foreground)] shadow-[0_16px_32px_var(--shadow-soft)] backdrop-blur-md transition duration-300 hover:-translate-y-1 hover:shadow-[0_22px_42px_var(--shadow-medium)]"
             >
               <span className="text-[var(--foreground)]">Download Resume</span>
@@ -225,9 +224,12 @@ export function Hero() {
               <div className="animate-soft-pulse absolute -left-6 top-[18%] hidden h-14 w-14 rounded-full bg-[radial-gradient(circle,rgba(174,194,255,0.2)_0%,rgba(174,194,255,0)_72%)] blur-xl lg:block" />
               <div className="animate-soft-pulse absolute -right-8 bottom-[14%] hidden h-16 w-16 rounded-full bg-[radial-gradient(circle,rgba(197,182,255,0.18)_0%,rgba(197,182,255,0)_72%)] blur-xl lg:block" />
               <Image
-                src={heroArtwork}
+                src="/assets/images/landing-page-right-side.png"
                 alt="Landing page hero visual"
                 priority
+                width={820}
+                height={620}
+                sizes="(max-width: 639px) 100vw, (max-width: 767px) 680px, (max-width: 1023px) 760px, 820px"
                 className="h-auto max-h-[34vh] w-full object-contain sm:max-h-[38vh] md:max-h-[40vh] lg:max-h-[46vh] xl:max-h-[52vh]"
               />
             </div>

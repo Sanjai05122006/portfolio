@@ -1,3 +1,8 @@
+"use client";
+
+import type { FormEvent } from "react";
+import { useEffect, useState } from "react";
+
 function MailIcon() {
   return (
     <svg
@@ -134,12 +139,14 @@ function ContactField({
   placeholder,
   type = "text",
   multiline = false,
+  name,
 }: {
   icon: React.ReactNode;
   label: string;
   placeholder: string;
   type?: string;
   multiline?: boolean;
+  name: string;
 }) {
   const sharedClassName =
     "w-full bg-transparent text-[17px] leading-7 tracking-[-0.02em] text-[var(--foreground)] placeholder:text-[#808aa0] focus:outline-none";
@@ -158,12 +165,18 @@ function ContactField({
         <span className="text-[15px] font-medium tracking-[-0.03em] text-[#46516a]">{label}</span>
         {multiline ? (
           <textarea
+            name={name}
             rows={6}
             placeholder={placeholder}
             className={`${sharedClassName} mt-1 resize-none`}
           />
         ) : (
-          <input type={type} placeholder={placeholder} className={`${sharedClassName} mt-1`} />
+          <input
+            name={name}
+            type={type}
+            placeholder={placeholder}
+            className={`${sharedClassName} mt-1`}
+          />
         )}
       </span>
     </label>
@@ -171,6 +184,81 @@ function ContactField({
 }
 
 export function ContactSection() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitState, setSubmitState] = useState<{
+    type: "success" | "error";
+    message: string;
+  } | null>(null);
+
+  useEffect(() => {
+    if (!submitState) {
+      return;
+    }
+
+    const timer = window.setTimeout(() => {
+      setSubmitState(null);
+    }, 3500);
+
+    return () => window.clearTimeout(timer);
+  }, [submitState]);
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const payload = {
+      name: String(formData.get("name") ?? "").trim(),
+      email: String(formData.get("email") ?? "").trim(),
+      subject: String(formData.get("subject") ?? "").trim(),
+      message: String(formData.get("message") ?? "").trim(),
+    };
+
+    if (!payload.name || !payload.email || !payload.subject || !payload.message) {
+      setSubmitState({
+        type: "error",
+        message: "Please fill in all fields before sending your message.",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitState(null);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const result = (await response.json()) as { error?: string; message?: string };
+
+      if (!response.ok) {
+        setSubmitState({
+          type: "error",
+          message: result.error ?? "Something went wrong while sending your message.",
+        });
+        return;
+      }
+
+      form.reset();
+      setSubmitState({
+        type: "success",
+        message: result.message ?? "Your message has been sent successfully.",
+      });
+    } catch {
+      setSubmitState({
+        type: "error",
+        message: "Unable to send your message right now. Please try again shortly.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section className="relative overflow-hidden py-6 md:py-8">
       <div className="pointer-events-none absolute inset-0">
@@ -222,31 +310,44 @@ export function ContactSection() {
             together.
           </h1>
 
-          <form className="mt-6 grid gap-4" action="#">
+          <form className="mt-6 grid gap-4" onSubmit={handleSubmit}>
             <div className="grid gap-4 md:grid-cols-2">
-              <ContactField icon={<UserIcon />} label="Your Name" placeholder="Enter your name" />
+              <ContactField
+                icon={<UserIcon />}
+                label="Your Name"
+                placeholder="Enter your name"
+                name="name"
+              />
               <ContactField
                 icon={<MailIcon />}
                 label="Your Email"
                 placeholder="Enter your email"
                 type="email"
+                name="email"
               />
             </div>
 
-            <ContactField icon={<ChatIcon />} label="Subject" placeholder="What&apos;s this about?" />
+            <ContactField
+              icon={<ChatIcon />}
+              label="Subject"
+              placeholder="What&apos;s this about?"
+              name="subject"
+            />
             <ContactField
               icon={<PenIcon />}
               label="Your Message"
               placeholder="Tell me about your project..."
               multiline
+              name="message"
             />
 
             <div className="flex flex-col gap-4 pt-1 md:flex-row md:items-center md:justify-between">
               <button
                 type="submit"
+                disabled={isSubmitting}
                 className="group inline-flex h-[50px] w-fit items-center justify-center gap-3 rounded-[14px] bg-[#171b25] px-6 text-[15px] font-medium tracking-[-0.03em] text-white shadow-[0_16px_34px_rgba(34,39,59,0.24)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_22px_42px_rgba(72,82,122,0.28)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[rgba(90,118,232,0.18)]"
               >
-                <span>Send Message</span>
+                <span>{isSubmitting ? "Sending..." : "Send Message"}</span>
                 <span className="transition duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5">
                   <SendIcon />
                 </span>
@@ -259,6 +360,7 @@ export function ContactSection() {
                 <span>Your information is safe and secure.</span>
               </div>
             </div>
+
           </form>
         </div>
 
@@ -348,6 +450,38 @@ export function ContactSection() {
           </div>
         </div>
       </div>
+
+      {submitState ? (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[rgba(16,19,31,0.28)] px-6 backdrop-blur-sm">
+          <div className="w-full max-w-[420px] rounded-[24px] border border-[#dde4f1] bg-white px-6 py-6 text-center shadow-[0_30px_80px_rgba(61,74,119,0.24)]">
+            <div
+              className={`mx-auto flex h-14 w-14 items-center justify-center rounded-full ${
+                submitState.type === "success"
+                  ? "bg-[linear-gradient(180deg,#ecfbf2_0%,#dbf5e5_100%)] text-[#2e8a57]"
+                  : "bg-[linear-gradient(180deg,#fff1f4_0%,#ffe2e8_100%)] text-[#c14d66]"
+              }`}
+            >
+              {submitState.type === "success" ? <ShieldIcon /> : <ChatIcon />}
+            </div>
+
+            <h2 className="mt-4 text-[24px] font-semibold tracking-[-0.05em] text-[var(--foreground)]">
+              {submitState.type === "success" ? "Message sent successfully" : "Unable to send message"}
+            </h2>
+
+            <p className="mt-3 text-[15px] leading-[1.7] tracking-[-0.02em] text-[var(--muted)]">
+              {submitState.message}
+            </p>
+
+            <button
+              type="button"
+              onClick={() => setSubmitState(null)}
+              className="mt-6 inline-flex h-[46px] min-w-[120px] items-center justify-center rounded-[14px] bg-[#171b25] px-5 text-[15px] font-medium tracking-[-0.03em] text-white shadow-[0_16px_34px_rgba(34,39,59,0.18)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_20px_38px_rgba(72,82,122,0.22)]"
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      ) : null}
     </section>
   );
 }

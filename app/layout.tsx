@@ -32,14 +32,15 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-[var(--background)] text-[var(--foreground)]">
         <div className="min-h-screen p-2 md:p-3">
           <div className="relative flex min-h-[calc(100vh-16px)] flex-col overflow-hidden rounded-[24px] border border-[var(--line)] bg-[linear-gradient(180deg,var(--shell-top)_0%,var(--shell-bottom)_100%)] shadow-[0_24px_70px_var(--shadow-medium)] md:min-h-[calc(100vh-24px)] md:rounded-[28px]">
             <div className="pointer-events-none absolute inset-0 z-0">
-              <div className="absolute inset-0 bg-[linear-gradient(180deg,#fcfbff_0%,#f8f7ff_18%,#f4f6ff_42%,#f1f6ff_68%,#eef4ff_100%)]" />
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_18%,rgba(214,193,255,0.18)_0%,rgba(214,193,255,0)_28%),radial-gradient(circle_at_78%_14%,rgba(171,197,255,0.16)_0%,rgba(171,197,255,0)_30%),radial-gradient(circle_at_82%_78%,rgba(195,215,255,0.16)_0%,rgba(195,215,255,0)_24%),radial-gradient(circle_at_28%_88%,rgba(224,196,255,0.14)_0%,rgba(224,196,255,0)_24%)]" />
+              <div className="absolute inset-0 bg-[linear-gradient(180deg,#fdfbff_0%,#f8f4ff_16%,#f4f2ff_34%,#f1f4ff_52%,#edf4ff_72%,#ebf3ff_100%)]" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_14%_14%,rgba(217,196,255,0.18)_0%,rgba(217,196,255,0)_24%),radial-gradient(circle_at_78%_10%,rgba(179,201,255,0.16)_0%,rgba(179,201,255,0)_26%),radial-gradient(circle_at_86%_56%,rgba(188,214,255,0.14)_0%,rgba(188,214,255,0)_22%),radial-gradient(circle_at_24%_78%,rgba(226,198,255,0.13)_0%,rgba(226,198,255,0)_20%),radial-gradient(circle_at_66%_92%,rgba(176,205,255,0.12)_0%,rgba(176,205,255,0)_18%)]" />
             </div>
             <Navbar />
             <main className="relative z-10 min-h-0 flex-1">{children}</main>

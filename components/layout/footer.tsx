@@ -35,11 +35,13 @@ function MailIcon() {
 }
 
 export function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="relative z-10 shrink-0 border-t border-[var(--line)] bg-[var(--surface)]">
       <div className="flex w-full items-center justify-between px-6 py-8 md:px-10 xl:px-[56px]">
         <p className="text-[15px] tracking-[-0.02em] text-[var(--muted)]">
-          © 2025 Sanjai M. All rights reserved.
+          © {currentYear} Sanjai M. All rights reserved.
         </p>
 
         <div className="flex items-center gap-[34px] text-[var(--muted)]">
@@ -53,7 +55,7 @@ export function Footer() {
             <GithubIcon />
           </Link>
           <Link
-            href="https://www.linkedin.com"
+            href="https://www.linkedin.com/in/sanjai-m-b326b1325/"
             target="_blank"
             rel="noreferrer"
             aria-label="LinkedIn"

@@ -50,7 +50,10 @@ export function Navbar() {
 
         <nav className="hidden items-center gap-[40px] min-[930px]:flex">
           {landingNavItems.map((item) => {
-            const active = pathname === item.href;
+            const active =
+              item.href === "/projects"
+                ? pathname === "/projects" || pathname.startsWith("/projects/")
+                : pathname === item.href;
 
             return (
               <Link
@@ -126,7 +129,10 @@ export function Navbar() {
       >
         <nav className="flex flex-col px-6 py-5">
           {landingNavItems.map((item) => {
-            const active = pathname === item.href;
+            const active =
+              item.href === "/projects"
+                ? pathname === "/projects" || pathname.startsWith("/projects/")
+                : pathname === item.href;
 
             return (
               <Link

@@ -7,12 +7,36 @@ export type Project = {
   slug: string;
   name: string;
   description: string;
+  heroTitle: string;
+  heroSummary: string;
   category: string;
   type: string;
   image: string;
   stack: string[];
   highlights: string[];
   metric: string;
+  overview: string;
+  challenge: string;
+  solution: string;
+  outcomes: string[];
+  year: string;
+  role: string;
+  status: string;
+  duration: string;
+  impact: string[];
+  techGroups: Array<{
+    label: string;
+    value: string;
+  }>;
+  challengeCards: Array<{
+    title: string;
+    detail: string;
+  }>;
+  buildPoints: string[];
+  heroStats: Array<{
+    title: string;
+    detail: string;
+  }>;
   href?: string;
   githubHref?: string;
   imageFrameClassName?: string;
@@ -96,9 +120,7 @@ export function ProjectCard({ project }: { project: Project }) {
 
       <div className="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-[#eef0f5] pt-5">
         <Link
-          href={project.href ?? "#"}
-          target="_blank"
-          rel="noreferrer"
+          href={`/projects/${project.slug}`}
           className="inline-flex items-center gap-2 rounded-lg border border-[#dfe3f0] px-5 py-2.5 text-sm font-medium text-[#111827] transition hover:bg-[#eef2ff]"
         >
           View Project →

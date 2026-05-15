@@ -242,9 +242,6 @@ export function ProjectDetail({ project }: { project: Project }) {
                 <div className="absolute right-[10%] top-[24%] h-4 w-4 rounded-full bg-[radial-gradient(circle,rgba(134,111,255,0.94)_0%,rgba(134,111,255,0.2)_62%,rgba(134,111,255,0)_100%)] shadow-[0_12px_28px_rgba(101,92,255,0.26)]" />
                 <div className="absolute right-[8%] bottom-[30%] h-5 w-5 rounded-full bg-[radial-gradient(circle,rgba(134,111,255,0.94)_0%,rgba(134,111,255,0.2)_62%,rgba(134,111,255,0)_100%)] shadow-[0_12px_28px_rgba(101,92,255,0.26)]" />
                 <div className="group absolute left-1/2 top-[49%] h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2">
-                  <div className="absolute left-1/2 top-[82%] h-[74px] w-[260px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(113,102,255,0.42)_0%,rgba(113,102,255,0.16)_52%,rgba(113,102,255,0)_78%)] blur-2xl" />
-                  <div className="absolute left-1/2 top-[79%] h-[112px] w-[320px] -translate-x-1/2 rounded-full border border-[#ddd5ff] bg-[linear-gradient(180deg,rgba(255,255,255,0.42)_0%,rgba(237,232,255,0.64)_100%)] shadow-[0_22px_46px_rgba(122,112,255,0.18)]" />
-                  <div className="absolute left-1/2 top-[82%] h-[72px] w-[248px] -translate-x-1/2 rounded-full border border-[#d5ccff] bg-[linear-gradient(180deg,rgba(255,255,255,0.66)_0%,rgba(225,217,255,0.72)_100%)] shadow-[0_18px_38px_rgba(122,112,255,0.18)]" />
                   <div
                     className={`absolute left-1/2 top-[38%] h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-[34px] border border-white/60 bg-[linear-gradient(180deg,rgba(255,255,255,0.34)_0%,rgba(235,230,255,0.26)_100%)] p-4 shadow-[0_36px_78px_rgba(103,94,255,0.24)] transition duration-300 group-hover:-translate-y-[52%] ${
                       project.imageFrameClassName ?? ""

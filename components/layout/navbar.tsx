@@ -100,7 +100,7 @@ export function Navbar() {
             </span>
           </button>
           <Link
-            href="mailto:sanjaimurugan08@gmail.com"
+            href="mailto:sanjai05126@gmail.com"
             onClick={closeMenu}
             className="group hidden h-[54px] items-center gap-3 rounded-[14px] bg-[linear-gradient(135deg,var(--cta-start)_0%,var(--cta-mid)_55%,var(--cta-end)_100%)] px-[27px] text-[15px] font-medium tracking-[-0.03em] text-white shadow-[0_18px_38px_var(--shadow-soft)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_24px_46px_var(--shadow-medium)] min-[930px]:inline-flex"
           >
@@ -151,7 +151,7 @@ export function Navbar() {
           })}
 
           <Link
-            href="mailto:sanjaimurugan08@gmail.com"
+            href="mailto:sanjai05126@gmail.com"
             onClick={closeMenu}
             className="mt-4 inline-flex h-[54px] items-center justify-center gap-3 rounded-[16px] bg-[linear-gradient(135deg,var(--cta-start)_0%,var(--cta-mid)_55%,var(--cta-end)_100%)] px-6 text-[15px] font-medium tracking-[-0.03em] text-white shadow-[0_18px_38px_var(--shadow-soft)]"
           >

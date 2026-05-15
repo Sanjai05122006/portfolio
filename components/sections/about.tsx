@@ -212,7 +212,7 @@ export function AboutSection() {
 
             <div className="mt-7 flex flex-col gap-4 sm:flex-row">
               <Link
-                href="mailto:sanjaimurugan08@gmail.com?subject=Let%27s%20Connect"
+                href="mailto:sanjai05126@gmail.com?subject=Let%27s%20Connect"
                 className="inline-flex h-[52px] items-center justify-center gap-3 rounded-[14px] bg-[linear-gradient(135deg,#edf0ff_0%,#e7ecff_46%,#e2eeff_100%)] px-6 text-[15px] font-medium tracking-[-0.03em] text-[#4d5d9c] shadow-[0_14px_28px_rgba(118,132,180,0.1),inset_0_1px_0_rgba(255,255,255,0.88)] transition duration-300 hover:-translate-y-1"
               >
                 <span>Let&apos;s Connect</span>
@@ -319,7 +319,6 @@ export function AboutSection() {
 
         <SectionCard title="How I Work" className="mt-6">
           <div className="relative grid gap-5 xl:grid-cols-5">
-            <div className="absolute left-[8%] right-[8%] top-[28px] hidden h-px bg-[linear-gradient(90deg,rgba(125,131,255,0.24)_0%,rgba(141,122,255,0.55)_50%,rgba(125,131,255,0.24)_100%)] xl:block" />
             {workflowSteps.map((step) => (
               <div key={step.number} className="relative rounded-[20px] border border-[#ebeff8] bg-white/72 px-4 py-5 shadow-[0_8px_20px_rgba(112,124,176,0.05)]">
                 <div className="flex items-center gap-3">

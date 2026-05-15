@@ -212,6 +212,7 @@ export function ContactSection() {
       email: String(formData.get("email") ?? "").trim(),
       subject: String(formData.get("subject") ?? "").trim(),
       message: String(formData.get("message") ?? "").trim(),
+      website: String(formData.get("website") ?? "").trim(),
     };
 
     if (!payload.name || !payload.email || !payload.subject || !payload.message) {
@@ -322,10 +323,19 @@ export function ContactSection() {
                 icon={<MailIcon />}
                 label="Your Email"
                 placeholder="Enter your email"
-                type="email"
+type="email"
                 name="email"
               />
             </div>
+
+            <input
+              type="text"
+              name="website"
+              tabIndex={-1}
+              autoComplete="off"
+              className="hidden"
+              aria-hidden="true"
+            />
 
             <ContactField
               icon={<ChatIcon />}

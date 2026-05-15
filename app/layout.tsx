@@ -6,6 +6,8 @@ import "@/styles/globals.css";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://sanjaiapp.tech";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -17,12 +19,30 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
     default: "Sanjai M",
     template: "%s | Sanjai M",
   },
   description:
     "Portfolio of Sanjai M, a full-stack developer focused on scalable systems and AI-powered applications.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Sanjai M",
+    description:
+      "Portfolio of Sanjai M, a full-stack developer focused on scalable systems and AI-powered applications.",
+    url: siteUrl,
+    siteName: "Sanjai M Portfolio",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sanjai M",
+    description:
+      "Portfolio of Sanjai M, a full-stack developer focused on scalable systems and AI-powered applications.",
+  },
 };
 
 export default function RootLayout({

@@ -3,8 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 
 import "@/styles/globals.css";
-import { Footer } from "@/components/layout/footer";
-import { Navbar } from "@/components/layout/navbar";
+import { SiteFooter, SiteHeader } from "@/components/layout/site-chrome";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://sanjaiapp.tech";
 
@@ -63,9 +62,9 @@ export default function RootLayout({
               <div className="absolute inset-0 bg-[linear-gradient(180deg,#fdfbff_0%,#f8f4ff_16%,#f4f2ff_34%,#f1f4ff_52%,#edf4ff_72%,#ebf3ff_100%)]" />
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_14%_14%,rgba(217,196,255,0.18)_0%,rgba(217,196,255,0)_24%),radial-gradient(circle_at_78%_10%,rgba(179,201,255,0.16)_0%,rgba(179,201,255,0)_26%),radial-gradient(circle_at_86%_56%,rgba(188,214,255,0.14)_0%,rgba(188,214,255,0)_22%),radial-gradient(circle_at_24%_78%,rgba(226,198,255,0.13)_0%,rgba(226,198,255,0)_20%),radial-gradient(circle_at_66%_92%,rgba(176,205,255,0.12)_0%,rgba(176,205,255,0)_18%)]" />
             </div>
-            <Navbar />
+            <SiteHeader />
             <main className="relative z-10 min-h-0 flex-1">{children}</main>
-            <Footer />
+            <SiteFooter />
           </div>
         </div>
         <Analytics />
